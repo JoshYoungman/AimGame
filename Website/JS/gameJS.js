@@ -1,15 +1,12 @@
 var score = -1,
-previousScore = score - 1;
-
-var easyGame = "http://localhost:8080/EasyGame.htm",
+previousScore = score - 1,
+easyGame = "http://localhost:8080/EasyGame.htm",
 mediumGame = "http://localhost:8080/MediumGame.htm",
-hardGame = "http://localhost:8080/HardGame.htm";
-randomGame = "http://localhost:8080/RandomGame.htm";
-
-var targetSize = 40;
-
-var targetDifficulty;
-var difficultySize;
+hardGame = "http://localhost:8080/HardGame.htm",
+randomGame = "http://localhost:8080/RandomGame.htm",
+targetSize = 40,
+targetDifficulty,
+difficultySize;
 
 if (window.location == easyGame){
 	targetDifficulty = 'easyTarget';
@@ -76,15 +73,14 @@ function countdownTimer() {
 
 function targetHit() {
 	var w = window,
-    d = document,
-    e = d.documentElement,
-    g = d.getElementsByTagName('body')[0],
-    x = w.innerWidth || e.clientWidth || g.clientWidth,
-    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-
-	var t = document.getElementById(targetDifficulty);
-	var x_pos = Math.floor((Math.random() * x) - difficultySize);
-	var y_pos = Math.floor((Math.random() * y) - difficultySize);
+	d = document,
+	e = d.documentElement,
+	g = d.getElementsByTagName('body')[0],
+	x = w.innerWidth || e.clientWidth || g.clientWidth,
+	y = w.innerHeight|| e.clientHeight|| g.clientHeight,
+	t = document.getElementById(targetDifficulty),
+	x_pos = Math.floor((Math.random() * x) - difficultySize),
+	y_pos = Math.floor((Math.random() * y) - difficultySize);
 
 	while (x_pos < 0)
 	{

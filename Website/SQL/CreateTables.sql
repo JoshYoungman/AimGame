@@ -1,0 +1,19 @@
+USE aimgame;
+
+CREATE TABLE easy_highscores (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(30) NOT NULL,
+score INT(3)
+);
+
+CREATE TABLE medium_highscores (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(30) NOT NULL,
+score INT(3)
+);
+
+CREATE TABLE hard_highscores (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(30) NOT NULL,
+score INT(3)
+);
