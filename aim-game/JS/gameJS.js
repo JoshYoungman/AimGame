@@ -1,15 +1,30 @@
 var score = -1,
 previousScore = score - 1,
-easyGame = "http://localhost:8080/EasyGame.htm",
-mediumGame = "http://localhost:8080/MediumGame.htm",
-hardGame = "http://localhost:8080/HardGame.htm",
-randomGame = "http://localhost:8080/RandomGame.htm",
+localEasyGame = "http://localhost:8080/EasyGame.htm",
+localMediumGame = "http://localhost:8080/MediumGame.htm",
+localHardGame = "http://localhost:8080/HardGame.htm",
+localRandomGame = "http://localhost:8080/RandomGame.htm",
+easyGame = "https://aim-game.firebaseapp.com/EasyGame.htm",
+mediumGame = "https://aim-game.firebaseapp.com/MediumGame.htm",
+hardGame = "https://aim-game.firebaseapp.com/HardGame.htm",
+randomGame = "https://aim-game.firebaseapp.com/RandomGame.htm",
 targetSize = 40,
 targetDifficulty,
-window = window,
 difficultySize;
 
-if (window.location == easyGame){
+if (window.location == localEasyGame){
+	targetDifficulty = 'easyTarget';
+	difficultySize = 59;
+} else if (window.location == localMediumGame){
+	targetDifficulty = 'mediumTarget';
+	difficultySize = 39;
+} else if (window.location == localHardGame){
+	targetDifficulty = 'hardTarget';
+	difficultySize = 19;
+} else if (window.location == localRandomGame){
+	targetDifficulty = 'randomTarget';
+	difficultySize = targetSize - 1;
+} else if (window.location == easyGame){
 	targetDifficulty = 'easyTarget';
 	difficultySize = 59;
 } else if (window.location == mediumGame){
