@@ -7,7 +7,7 @@ window.onload = function() {
 		if(username == null || username == ""){ 
 			alert("Please enter a Username");
 		} else {
-			window.location.href='TypeSelect.htm';
+			window.location.href='TypeSelect.html';
 		}
 	}
 }

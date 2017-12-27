@@ -3,6 +3,6 @@ window.onload = function lobbies() {
 }
 
 function joinGame() {
-	var game = window.location.href='Game.htm';
+	var game = window.location.href='EasyGame.html';
 	document.getElementById("joinGameBtn").onclick = game;
 }

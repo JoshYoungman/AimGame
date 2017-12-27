@@ -1,13 +1,13 @@
 var score = -1,
 previousScore = score - 1,
-localEasyGame = "http://localhost:8080/EasyGame.htm",
-localMediumGame = "http://localhost:8080/MediumGame.htm",
-localHardGame = "http://localhost:8080/HardGame.htm",
-localRandomGame = "http://localhost:8080/RandomGame.htm",
-easyGame = "https://aim-game.firebaseapp.com/EasyGame.htm",
-mediumGame = "https://aim-game.firebaseapp.com/MediumGame.htm",
-hardGame = "https://aim-game.firebaseapp.com/HardGame.htm",
-randomGame = "https://aim-game.firebaseapp.com/RandomGame.htm",
+localEasyGame = "http://localhost:8080/EasyGame.html",
+localMediumGame = "http://localhost:8080/MediumGame.html",
+localHardGame = "http://localhost:8080/HardGame.html",
+localRandomGame = "http://localhost:8080/RandomGame.html",
+easyGame = "https://aim-game.firebaseapp.com/EasyGame.html",
+mediumGame = "https://aim-game.firebaseapp.com/MediumGame.html",
+hardGame = "https://aim-game.firebaseapp.com/HardGame.html",
+randomGame = "https://aim-game.firebaseapp.com/RandomGame.html",
 targetSize = 40,
 targetDifficulty,
 difficultySize;
@@ -129,14 +129,10 @@ function targetHit() {
 	if (previousScore != score - 1){
 		score = previousScore + 1;
 	}
-    
-    var path = "\Sound"
-        var snd = new Audio(path + "bopsound" + ".wav");
-        snd.play();
 }
 
 function menu() {
-	var menu = window.location.href='TypeSelect.htm';
+	var menu = window.location.href='TypeSelect.html';
 
 	document.getElementById("menuBtn").onclick = menu;
 }

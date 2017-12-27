@@ -9,18 +9,19 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="CSS/CSS.css">
+    <link rel="icon" type="image/png" href="https://img1-secure.targetimg1.com/wcsstore/marketing/com/mobile/images/template/favicon-16x16.png"/>
 	
-	<script src="JS/gameJS.js"></script>
+	<script src="JS/difficultySelectJS.js"></script>
   </head>
-  <body>
-	<div class="contain">
-	<div id="timer"></div>
-	<div id="initialTimer"></div>
-	<div id="vs"></div>
-	<div id="finalScore"></div>
-	<div id="hardTarget" onclick="targetHit()"></div>
-	<button type="submit" id="menuBtn" onclick="menu()">Back to Menu</button>
-	<button type="submit" id="playAgainBtn" onclick="playAgain()">Play Again!</button>
+  <body class="body">
+	<div class="blurred-box">
+		<div class="enterUsername">
+			<h1>Select Difficulty</h1></br>
+			<button type="submit" id="easyBtn" onclick="selectEasy()">Easy</button>
+			<button type="submit" id="mediumBtn" onclick="selectMedium()">Medium</button>
+			<button type="submit" id="hardBtn" onclick="selectHard()">Hard</button>
+			<button type="submit" id="randomBtn" onclick="selectRandom()">Random</button>
+		</div>
 	</div>
 
     <!-- Optional JavaScript -->
