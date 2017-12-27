@@ -87,7 +87,7 @@ function countdownTimer() {
 	}
 }
 
-function targetHit() {
+function targetHit() {   
 	var w = window,
 	d = document,
 	e = d.documentElement,
@@ -129,6 +129,10 @@ function targetHit() {
 	if (previousScore != score - 1){
 		score = previousScore + 1;
 	}
+    
+    var path = "\Sound"
+        var snd = new Audio(path + "bopsound" + ".wav");
+        snd.play();
 }
 
 function menu() {

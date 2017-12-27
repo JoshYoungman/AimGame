@@ -87,7 +87,7 @@ function countdownTimer() {
 	}
 }
 
-function targetHit() {
+function targetHit() {   
 	var w = window,
 	d = document,
 	e = d.documentElement,
