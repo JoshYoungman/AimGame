@@ -4,6 +4,6 @@ function selectSingleplayer() {
 }
 
 function selectMultiplayer() {
-	var multiplayer = window.location.href='Lobbies.html';
+	var multiplayer = window.location.href='MultiplayerGame.html';
 	document.getElementById("multiplayerBtn").onclick = multiplayer;
 }

@@ -1,6 +1,6 @@
 .body {
     background-image: url("DotsBackground.png");
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 	background-attachment: fixed;
 	background-size: cover;
 	width: 100%;
@@ -165,6 +165,63 @@
 	top: 75%;
 	left: 45%;
 	transform: translate(-50%, -50%);
+	z-index: 1;
+	font-family: Arial;
+	font-size: 24;
+}
+
+#hostBtn{
+    text-align: center;
+	overflow: hidden;
+	position: fixed;
+	top: 20%;
+	left: 53%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	font-family: Arial;
+	font-size: 24;
+}
+
+#joinBtn{
+    text-align: center;
+	overflow: hidden;
+	position: fixed;
+	top: 20%;
+	left: 47%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	font-family: Arial;
+	font-size: 24;
+}
+
+#roomCode{
+    font-size:48px;
+	text-align: center;
+	overflow: hidden;
+	position: fixed;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 2%;
+	z-index: 1;
+}
+
+#otherID{
+    text-align: center;
+    overflow: hidden;
+	position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#connectBtn{
+    text-align: center;
+    overflow: hidden;
+	position: fixed;
+	top: 42%;
+	left: 50%;
+    transform: translate(-50%, -50%);
 	z-index: 1;
 	font-family: Arial;
 	font-size: 24;

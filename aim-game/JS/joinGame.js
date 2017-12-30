@@ -17,3 +17,23 @@ const hostSignalRef = database.ref('/rooms/'+code+'/host/'+name);
 hostSignalRef.on('child_added', (res) => {
   peer.signal(JSON.parse(res.val().data));
 });
+
+// Listen for new players
+playersRef.on('child_added', (res) => {
+  const playerName = res.key;
+
+  // Create Peer channel
+  const peer = new SimplePeer();
+
+  // Listen for signaling data from specific player
+  playerRef.on('child_added', (res) => peer.signal(JSON.parse(res.val().data)));
+
+  // Upload signaling data from host
+  const signalDataRef = database.ref('/rooms/'+code+'/host/'+playerName);
+  peer.on('signal', (signalData) => {
+    const newSignalDataRef = signalDataRef.push();
+    newSignalDataRef.set({
+      data: JSON.stringify(signalData)
+    });
+  });
+});

@@ -11,19 +11,25 @@
 	<link rel="stylesheet" type="text/css" href="CSS/CSS.css">
     <link rel="icon" type="image/png" href="https://img1-secure.targetimg1.com/wcsstore/marketing/com/mobile/images/template/favicon-16x16.png"/>
 	
-	<script src="JS/homeJS.js"></script>
-	<script src="JS/lobbiesJS.js"></script>
   </head>
   <body class="body">
-	<div class="blurred-box-lobbies"></div>
+      <div class="blurred-box-lobbies"></div>
 	<div class="container">
 		<div class="lobbies">
-			<h1>Lobbies</h1>
+			<h1>Aim Game</h1>
 		</div>
 		<div id="displayUsername"></div>
-		<button type="submit" id="joinGameBtn" onclick="joinGame()">Join Game</button>
+		<button type="submit" id="hostGameBtn" onclick="hostGame()">Host Game</button>
+        <button type="submit" id="joinGameBtn" onclick="joinGame()">Join Game</button>
+        <div id="roomCode"/>
+        <div id="roomCodeSub"/>
 	</div>
+    <div class="joinGame"></div>
+        <input type="text" id="roomCodeInput"/>
+        <button type="submit" id="joinGameBtn2" onclick="joinGame()">Join Game</button>
+    </div>
 
+    <script src="JS/lobbiesJS.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

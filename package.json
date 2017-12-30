@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
+    "jade": "^1.11.0",
+    "peer": "^0.2.8",
     "screenfull": "^3.3.2"
   }
 }
