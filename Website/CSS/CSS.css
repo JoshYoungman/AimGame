@@ -206,23 +206,13 @@
 	z-index: 1;
 }
 
-#otherID{
+.contain1{
     text-align: center;
-    overflow: hidden;
+	overflow: hidden;
 	position: fixed;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#connectBtn{
-    text-align: center;
-    overflow: hidden;
-	position: fixed;
-	top: 42%;
+	top: 50%;
 	left: 50%;
-    transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	padding: 2%;
 	z-index: 1;
-	font-family: Arial;
-	font-size: 24;
 }

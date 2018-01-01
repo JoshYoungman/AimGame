@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="CSS/CSS.css">
     <link rel="icon" type="image/png" href="https://d2m7ibezl7l5lt.cloudfront.net/img/v2/favicon.acc0cddcc468.ico"/>
-	
-	<script src="JS/multiplayerGameJS.js"></script>
+
   </head>
   <body>
       <div class="contain">
@@ -19,15 +18,27 @@
         <div id="initialTimer"></div>
         <div id="vs"></div>
         <div id="finalScore"></div>
-        <div id="mediumTarget" onclick="targetHit()"></div>
-        <button type="submit" id="menuBtn" onclick="menu()">Back to Menu</button>
-        <button type="submit" id="playAgainBtn" onclick="playAgain()">Play Again!</button>
-        <button type="submit" id="hostBtn" onclick="hostGame()">Host</button>
-        <button type="submit" id="joinBtn" onclick="joinGame()">Join</button>
-        <div id="roomCode"></div>
+        <div id="mediumTarget"></div>
+        <button type="submit" id="menuBtn">Back to Menu</button>
+        <button type="submit" id="playAgainBtn">Play Again!</button>
+        <button type="submit" id="hostBtn">Host</button>
+        <button type="submit" id="joinBtn">Join</button>
+        <!--<div id="roomCode"></div>
+        <textarea id="yourId"></textarea>
         <input type="text" id="otherID"/>
-        <button type="submit" id="connectBtn">Connect</button>
+        <button type="submit" id="connectBtn">Connect</button>-->
+          
+        <div class="contain1">
+        <label id="yIdLabel">Your ID:</label><br/>
+        <textarea id="yId"></textarea><br/>
+        <label id="oIdLabel">Other ID:</label><br/>
+        <textarea id="oId"></textarea><br/>
+        <button id="connect">Connect</button><br/>
+        <button id="ready">Ready</button>
+        </div>
 	   </div>
+      
+      <script src="Scripts/bundle.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

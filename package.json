@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify Website/Scripts/multiplayerGameJS.js -o Website/Scripts/bundle.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,10 @@
     "express": "^4.16.2",
     "jade": "^1.11.0",
     "peer": "^0.2.8",
-    "screenfull": "^3.3.2"
+    "screenfull": "^3.3.2",
+    "simple-peer": "^8.2.0"
+  },
+  "devDependencies": {
+    "browserify": "^14.5.0"
   }
 }
