@@ -1,5 +1,6 @@
 var score = 0,
 opponentScore = 0,
+opponentName ='';
 previousScore = score - 1,
 targetSize = 40,
 targetDifficulty = 'mediumTarget',
@@ -109,18 +110,18 @@ function peerJS() {
     })
         
     document.getElementById('ready').addEventListener('click', function () {
-    var hide1 = document.getElementById('yIdLabel').style.display = 'none';
-    var hide2 = document.getElementById('yId').style.display = 'none';
-    var hide3 = document.getElementById('ready').style.display = 'none';
-    var startGame = document.getElementById('ready').onclick = initialCountdown();
-    peer.send(startGame, hide1, hide2, hide3)
+    document.getElementById('yIdLabel').style.display = 'none';
+    document.getElementById('yId').style.display = 'none';
+    document.getElementById('ready').style.display = 'none';
+    document.getElementById('ready').onclick = iCountdown();
+    peer.send()
     })
 
     peer.on('data', function (data) {
     document.getElementById('yIdLabel').style.display = 'none';
     document.getElementById('yId').style.display = 'none';
     document.getElementById('ready').style.display = 'none';
-    initialCountdown();
+    iCountdownPeer();
     })
     
     document.getElementById('mediumTarget').addEventListener('click', function () {
@@ -134,23 +135,53 @@ function peerJS() {
     
 }
 
-function initialCountdown() {
+var iCountdown = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            var iTimeLeft = 6;
+            var timerId = setInterval(countdown, 1000);
 
-	var iTimeLeft = 6;
-	var timerId = setInterval(countdown, 1000);
+            function countdown() {
+                if (iTimeLeft == 0) {
+                    clearTimeout(timerId);
+                    countdownTimer();
+                    document.getElementById('initialTimer').style.display = 'none';
+                    document.getElementById('vs').style.display = 'none';
+                } else {
+                    document.getElementById('initialTimer').innerHTML = iTimeLeft - 1 + "</br>" + "Get Ready!" ;
+                    iTimeLeft--;
+                }
+            }
 
-	function countdown() {
-		if (iTimeLeft == 0) {
-			clearTimeout(timerId);
-			countdownTimer();
-			document.getElementById('initialTimer').style.display = 'none';
-			document.getElementById('vs').style.display = 'none';
-		} else {
-			document.getElementById('initialTimer').innerHTML = iTimeLeft - 1 + "</br>" + "Get Ready!" ;
-			iTimeLeft--;
-		}
-	}
-}
+        }
+    };
+})();
+
+var iCountdownPeer = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            var iTimeLeft = 6;
+            var timerId = setInterval(countdown, 1000);
+
+            function countdown() {
+                if (iTimeLeft == 0) {
+                    clearTimeout(timerId);
+                    countdownTimer();
+                    document.getElementById('initialTimer').style.display = 'none';
+                    document.getElementById('vs').style.display = 'none';
+                } else {
+                    document.getElementById('initialTimer').innerHTML = iTimeLeft - 1 + "</br>" + "Get Ready!" ;
+                    iTimeLeft--;
+                }
+            }
+
+        }
+    };
+})();
 
 function countdownTimer() {
 	var timeLeft = 30;
@@ -168,7 +199,7 @@ function countdownTimer() {
 			document.getElementById(targetDifficulty).style.display = 'none';
 			document.getElementById('menuBtn').style.display = 'block';
 			document.getElementById('playAgainBtn').style.display = 'block';
-            document.getElementById('initialTimer').innerHTML = "Time's Up! </br>" + localStorage.getItem("usernamels") + ": " + score + "</br> Opponent Score: " + opponentScore;
+            document.getElementById('initialTimer').innerHTML = "Time's Up! </br>" + localStorage.getItem("usernamels") + ": " + score + "</br>Opponent: " + opponentScore;
 		} else {
 			document.getElementById('timer').innerHTML = timeLeft - 1 + ' seconds remaining';
 			timeLeft--;
