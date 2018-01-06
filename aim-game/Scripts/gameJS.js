@@ -2,39 +2,71 @@
 var score = -1,
 previousScore = score - 1,
 localEasyGame = "http://localhost:8080/EasyGame.html",
+localEasyGameTest = "http://localhost:8080/EasyGame.html#test",
 localMediumGame = "http://localhost:8080/MediumGame.html",
+localMediumGameTest = "http://localhost:8080/MediumGame.html#test",
 localHardGame = "http://localhost:8080/HardGame.html",
+localHardGameTest = "http://localhost:8080/HardGame.html#test",
 localUltraGame = "http://localhost:8080/UltraGame.html",
+localUltraGameTest = "http://localhost:8080/UltraGame.html#test",
 easyGame = "https://aim-game.firebaseapp.com/EasyGame.html",
+easyGameTest = "https://aim-game.firebaseapp.com/EasyGame.html#test",
 mediumGame = "https://aim-game.firebaseapp.com/MediumGame.html",
+mediumGameTest = "https://aim-game.firebaseapp.com/MediumGame.html#test",
 hardGame = "https://aim-game.firebaseapp.com/HardGame.html",
+hardGameTest = "https://aim-game.firebaseapp.com/HardGame.html#test",
 ultraGame = "https://aim-game.firebaseapp.com/UltraGame.html",
-targetDifficulty,
-difficultySize;
+ultraGameTest = "https://aim-game.firebaseapp.com/UltraGame.html#test",
+targetDifficulty = 'mediumGame',
+difficultySize = 39;
 
 // Decide what game mode is being played depending on the URL
 if (window.location == localEasyGame){
 	targetDifficulty = 'easyTarget';
 	difficultySize = 59;
+} else if (window.location == localEasyGameTest){
+    targetDifficulty = 'easyTarget';
+	difficultySize = 59;
+} else if (window.location == easyGame){
+    targetDifficulty = 'easyTarget';
+	difficultySize = 59;
+} else if (window.location == easyGameTest){
+    targetDifficulty = 'easyTarget';
+	difficultySize = 59;
 } else if (window.location == localMediumGame){
+	targetDifficulty = 'mediumTarget';
+	difficultySize = 39;
+} else if (window.location == localMediumGameTest){
+	targetDifficulty = 'mediumTarget';
+	difficultySize = 39;
+} else if (window.location == mediumGame){
+	targetDifficulty = 'mediumTarget';
+	difficultySize = 39;
+} else if (window.location == mediumGameTest){
 	targetDifficulty = 'mediumTarget';
 	difficultySize = 39;
 } else if (window.location == localHardGame){
 	targetDifficulty = 'hardTarget';
 	difficultySize = 19;
-} else if (window.location == localUltraGame){
-	targetDifficulty = 'ultraTarget';
-	difficultySize = 9;
-} else if (window.location == easyGame){
-	targetDifficulty = 'easyTarget';
-	difficultySize = 59;
-} else if (window.location == mediumGame){
-	targetDifficulty = 'mediumTarget';
-	difficultySize = 39;
+} else if (window.location == localHardGameTest){
+	targetDifficulty = 'hardTarget';
+	difficultySize = 19;
 } else if (window.location == hardGame){
 	targetDifficulty = 'hardTarget';
 	difficultySize = 19;
+} else if (window.location == hardGameTest){
+	targetDifficulty = 'hardTarget';
+	difficultySize = 19;
+} else if (window.location == localUltraGame){
+	targetDifficulty = 'ultraTarget';
+	difficultySize = 9;
+} else if (window.location == localUltraGameTest){
+	targetDifficulty = 'ultraTarget';
+	difficultySize = 9;
 } else if (window.location == ultraGame){
+	targetDifficulty = 'ultraTarget';
+	difficultySize = 9;
+} else if (window.location == ultraGameTest){
 	targetDifficulty = 'ultraTarget';
 	difficultySize = 9;
 }
