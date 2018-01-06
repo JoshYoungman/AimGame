@@ -1,33 +1,49 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+// Declare global variables
 var score = 0,
 opponentScore = 0,
-opponentName ='';
 previousScore = score - 1,
 targetSize = 40,
 targetDifficulty = 'mediumTarget',
 difficultySize = 39;
 
-window.onload = function() {
-    document.getElementById('menuBtn').style.display = 'none';
-	document.getElementById('playAgainBtn').style.display = 'none';
+var ready = document.getElementById('ready'),
+    yId = document.getElementById('yId'),
+    yIdLabel = document.getElementById('yIdLabel'),
+    oId = document.getElementById('oId'),
+    oIdLabel = document.getElementById('oIdLabel'),
+    connect = document.getElementById('connect'),
+    menu = document.getElementById('menuBtn'),
+    playAgain = document.getElementById('playAgainBtn'),
+    host = document.getElementById('hostBtn'),
+    join = document.getElementById('joinBtn');
+
+window.onload = function() { // Run function when the page is loaded
+    // Hide various HTML elements
+    menu.style.display = 'none';
+	playAgain.style.display = 'none';
     document.getElementById(targetDifficulty).style.display = 'none';
-    document.getElementById('yIdLabel').style.display = 'none';
-    document.getElementById('oIdLabel').style.display = 'none';
-    document.getElementById('yId').style.display = 'none';
-    document.getElementById('oId').style.display = 'none';
-    document.getElementById('connect').style.display = 'none';
-    document.getElementById('ready').style.display = 'none';
+    yIdLabel.style.display = 'none';
+    oIdLabel.style.display = 'none';
+    yId.style.display = 'none';
+    oId.style.display = 'none';
+    connect.style.display = 'none';
+    ready.style.display = 'none';
     
+    // Declaring variables to contain the user's screen width and height
     var w = window,
 	d = document,
 	e = d.documentElement,
 	g = d.getElementsByTagName('body')[0],
 	x = w.innerWidth || e.clientWidth || g.clientWidth,
 	y = w.innerHeight|| e.clientHeight|| g.clientHeight,
-	t = document.getElementById(targetDifficulty),
+	t = d.getElementById(targetDifficulty),
+        
+    // Create a random x and y position for the target that is within the user's screen resolution
 	x_pos = Math.floor((Math.random() * x) - difficultySize),
 	y_pos = Math.floor((Math.random() * y) - difficultySize);
 
+    // If the target is to be displayed off the screen, recalculate another position
 	while (x_pos < 0)
 	{
 		x_pos = Math.floor((Math.random() * x) - difficultySize);
@@ -38,188 +54,210 @@ window.onload = function() {
 		y_pos = Math.floor((Math.random() * y) - difficultySize);
 	}
 
+    // Set the target position
 	t.style.position = "absolute";
 	t.style.left = x_pos + 'px';
 	t.style.top = y_pos + 'px';
 
 
-    document.getElementById('hostBtn').onclick = function hostGame() {
+    host.onclick = function hostGame() { // Run function when the user clicks the host button
+        
+        // Add '#init' to the end of the URL
         window.location.hash = '#init';
 
-        document.getElementById('hostBtn').style.display = 'none';
-        document.getElementById('joinBtn').style.display = 'none';
-        document.getElementById('yId').style.display = 'block';
-        document.getElementById('oId').style.display = 'block';
-        document.getElementById('yIdLabel').style.display = 'block';
-        document.getElementById('oIdLabel').style.display = 'block';
-        document.getElementById('connect').style.display = 'block';
+        // Hide and display various HTML elements
+        host.style.display = 'none';
+        join.style.display = 'none';
+        yId.style.display = 'block';
+        oId.style.display = 'block';
+        yIdLabel.style.display = 'block';
+        oIdLabel.style.display = 'block';
+        connect.style.display = 'block';
 
-        var roomCode = "";
+        /*var roomCode = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         for (var i = 0; i < 4; i++)
         roomCode += possible.charAt(Math.floor(Math.random() * possible.length));
 
-        //document.getElementById("roomCode").innerHTML = "Room Code: " + roomCode;
+        document.getElementById("roomCode").innerHTML = "Room Code: " + roomCode;*/
 
-        peerJS();
+        peerJS(); // Execute the peerJS() function
     }
 
-    document.getElementById('joinBtn').onclick = function joinGame() {
-        document.getElementById('hostBtn').style.display = 'none';
-        document.getElementById('joinBtn').style.display = 'none';
-        document.getElementById('yId').style.display = 'block';
-        document.getElementById('oId').style.display = 'block';
-        document.getElementById('yIdLabel').style.display = 'block';
-        document.getElementById('oIdLabel').style.display = 'block';
-        document.getElementById('connect').style.display = 'block';
+    join.onclick = function joinGame() { // Run function whe the user clicks the join button
+        
+        // Hide and display various HTML elements
+        host.style.display = 'none';
+        join.style.display = 'none';
+        yId.style.display = 'block';
+        oId.style.display = 'block';
+        yIdLabel.style.display = 'block';
+        oIdLabel.style.display = 'block';
+        connect.style.display = 'block';
 
-        var roomCode = "";
+        /*var roomCode = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         for (var i = 0; i < 4; i++)
         roomCode += possible.charAt(Math.floor(Math.random() * possible.length));
 
-        //document.getElementById("roomCode").innerHTML = "Room Code: " + roomCode;
+        document.getElementById("roomCode").innerHTML = "Room Code: " + roomCode;*/
 
-        peerJS();
+        peerJS(); // Execute the peerJS() function
     }
 }
 
-function peerJS() {
-    var Peer = require('simple-peer');
-    var peer = new Peer({
-        initiator: location.hash === '#init',
+function peerJS() {    
+    var Peer = require('simple-peer'); // Load the 'simple-peer' module
+    var peer = new Peer({ // Create a new peer
+        initiator: location.hash === '#init', // Peer with '#init' in the URL is the initiator (first to send ID)
         trickle: false
     });
     
     peer.on('signal', function (data) {
-    document.getElementById('yId').value = JSON.stringify(data)
+        yId.value = JSON.stringify(data) // Initiator receives JSON string to send to the other peer
       
     })
 
-    document.getElementById('connect').addEventListener('click', function () {
-    var otherId = JSON.parse(document.getElementById('oId').value)
-    peer.signal(otherId)
-        
-    document.getElementById('ready').style.display = 'block';
-    
-    document.getElementById('oIdLabel').style.display = 'none';
-    document.getElementById('oId').style.display = 'none';
-    document.getElementById('connect').style.display = 'none';
+    connect.addEventListener('click', function () {
+        var otherId = JSON.parse(oId.value) // Non initiating peer enteres initiating peer's id, clicks connect and receives own id
+        peer.signal(otherId)
+
+        // Display and hide various HTML elements
+        ready.style.display = 'block';
+        oIdLabel.style.display = 'none';
+        oId.style.display = 'none';
+        connect.style.display = 'none';
         
     })
         
-    document.getElementById('ready').addEventListener('click', function () {
-    document.getElementById('yIdLabel').style.display = 'none';
-    document.getElementById('yId').style.display = 'none';
-    document.getElementById('ready').style.display = 'none';
-    document.getElementById('ready').onclick = iCountdown();
-    peer.send()
+    ready.addEventListener('click', function () {
+        // Hide various HTML elements when ready button is clicked
+        yIdLabel.style.display = 'none';
+        yId.style.display = 'none';
+        ready.style.display = 'none';
+
+        ready.onclick = iCountdown(); // Execute the iCountdown function when the ready button is clicked
+        peer.send() // Send 'data'
     })
 
-    peer.on('data', function (data) {
-    document.getElementById('yIdLabel').style.display = 'none';
-    document.getElementById('yId').style.display = 'none';
-    document.getElementById('ready').style.display = 'none';
-    iCountdownPeer();
+    peer.on('data', function (data) { // When the user receives 'data'
+        // Hide various HTML elements
+        yIdLabel.style.display = 'none';
+        yId.style.display = 'none';
+        ready.style.display = 'none';
+        
+        iCountdownPeer(); // Execute the iCountdownPeer() function
     })
     
-    document.getElementById('mediumTarget').addEventListener('click', function () {
-    var scoreSend = score;
-    peer.send(scoreSend)
+    document.getElementById(targetDifficulty).addEventListener('click', function () {
+        var scoreSend = score;
+        peer.send(scoreSend) // Send 'data' (score value) when the user clicks the target
     })
     
-    peer.on('data', function (data) {
-    opponentScore = data;
+    peer.on('data', function (data) { // When the user receives data
+        targetHit(); // Execute the targetHit() function
+        score--; // Reduce the score (due to targetHit() function being executed)
+        opponentScore = data; // Set opponentScore to 'data' received
+        if (opponentScore == 'undefined'){
+            opponentScore = 0; // To prevent oppenents score displaying as undefined if they don't score anything
+        }
     })
     
 }
 
 var iCountdown = (function() {
+    // Execute the function only once
     var executed = false;
     return function() {
         if (!executed) {
             executed = true;
-            var iTimeLeft = 6;
-            var timerId = setInterval(countdown, 1000);
+            
+            var iTimeLeft = 6; // Set the timer to 6 seconds
+            var timerId = setInterval(countdown, 1000); // Execute the following countdown function every second 
 
             function countdown() {
                 if (iTimeLeft == 0) {
-                    clearTimeout(timerId);
-                    countdownTimer();
+                    clearTimeout(timerId); // Prevent the previous setInterval function from executing
+                    countdownTimer(); // Execute the countdownTimer() function
                     document.getElementById('initialTimer').style.display = 'none';
-                    document.getElementById('vs').style.display = 'none';
                 } else {
+                    // Display how many seconds until the game starts
                     document.getElementById('initialTimer').innerHTML = iTimeLeft - 1 + "</br>" + "Get Ready!" ;
-                    iTimeLeft--;
+                    iTimeLeft--; // Reduce the iTimeLeft variable by 1
                 }
             }
-
         }
     };
 })();
 
 var iCountdownPeer = (function() {
+    // Execute the function only once
     var executed = false;
     return function() {
         if (!executed) {
             executed = true;
-            var iTimeLeft = 6;
-            var timerId = setInterval(countdown, 1000);
+            
+            var iTimeLeft = 6; // Set the timer to 6 seconds
+            var timerId = setInterval(countdown, 1000); // Execute the following countdown function every second 
 
             function countdown() {
                 if (iTimeLeft == 0) {
-                    clearTimeout(timerId);
-                    countdownTimer();
+                    clearTimeout(timerId); // Prevent the previous setInterval function from executing
+                    countdownTimer(); // Execute the countdownTimer() function
                     document.getElementById('initialTimer').style.display = 'none';
-                    document.getElementById('vs').style.display = 'none';
                 } else {
+                    // Display how many seconds until the game starts
                     document.getElementById('initialTimer').innerHTML = iTimeLeft - 1 + "</br>" + "Get Ready!" ;
-                    iTimeLeft--;
+                    iTimeLeft--; // Reduce the iTimeLeft variable by 1
                 }
             }
-
         }
     };
 })();
 
 function countdownTimer() {
-	var timeLeft = 30;
-	var timerId = setInterval(countdown, 1000);
+	var timeLeft = 30; // Set the countdown timer to 30 seconds
+	var timerId = setInterval(countdown, 1000); // Execute the following countdown function every second
 
 	function countdown() {
 		if (timeLeft == 0) {
+            // Used to prevent users from altering their score in the Developer tools console
 			if (previousScore != score - 1){
 				score = previousScore + 1;
 		}
-
-			clearTimeout(timerId);
-			timeLeft = "0";
+			clearTimeout(timerId); // Prevent the previous setInterval function from executing
+			timeLeft = "0"; // Ensure timeLeft is set to 0
+            // Displayed and hide various HTML elements
 			document.getElementById('initialTimer').style.display = 'block';
 			document.getElementById(targetDifficulty).style.display = 'none';
-			document.getElementById('menuBtn').style.display = 'block';
-			document.getElementById('playAgainBtn').style.display = 'block';
-            document.getElementById('initialTimer').innerHTML = "Time's Up! </br>" + localStorage.getItem("usernamels") + ": " + score + "</br>Opponent: " + opponentScore;
+			menu.style.display = 'block';
+			playAgain.style.display = 'block';
+            document.getElementById('initialTimer').innerHTML = "Time's Up! </br>" + localStorage.getItem("usernamels") + ": " + score + "</br>Opponent: " + opponentScore; // Display the user's and opponent's final scores
 		} else {
-			document.getElementById('timer').innerHTML = timeLeft - 1 + ' seconds remaining';
-			timeLeft--;
-			document.getElementById(targetDifficulty).style.display = 'block';
+			document.getElementById('timer').innerHTML = timeLeft - 1 + ' seconds remaining'; // Display how long is left in the game
+			timeLeft--; // Reduce the timer by 1
+			document.getElementById(targetDifficulty).style.display = 'block'; // Display the target
 		}
 	}
 }
 
-document.getElementById('mediumTarget').onclick = function targetHit() {   
-	var w = window,
+document.getElementById(targetDifficulty).onclick = function targetHit() { // Function for when the user clicks on the target
+	// Declaring variables to contain the user's screen width and height
+    var w = window,
 	d = document,
 	e = d.documentElement,
 	g = d.getElementsByTagName('body')[0],
 	x = w.innerWidth || e.clientWidth || g.clientWidth,
 	y = w.innerHeight|| e.clientHeight|| g.clientHeight,
-	t = document.getElementById(targetDifficulty),
+	t = d.getElementById(targetDifficulty),
+        
+    // Create a random x and y position for the target that is within the user's screen resolution
 	x_pos = Math.floor((Math.random() * x) - difficultySize),
 	y_pos = Math.floor((Math.random() * y) - difficultySize);
 
+    // If the target is to be displayed off the screen, recalculate another position
 	while (x_pos < 0)
 	{
 		x_pos = Math.floor((Math.random() * x) - difficultySize);
@@ -230,28 +268,29 @@ document.getElementById('mediumTarget').onclick = function targetHit() {
 		y_pos = Math.floor((Math.random() * y) - difficultySize);
 	}
 
+    // Set the target position
 	t.style.position = "absolute";
 	t.style.left = x_pos + 'px';
 	t.style.top = y_pos + 'px';
 
+    // Increment the user's score
 	score++;
 	previousScore++;
 
+    // Prevent the user from editing their score in the Developer tools console
 	if (previousScore != score - 1){
 		score = previousScore + 1;
 	}
 }
 
-document.getElementById('menuBtn').onclick = function menu() {
-	var menu = window.location.href='TypeSelect.html';
-
-	document.getElementById("menuBtn").onclick = menu;
+menu.onclick = function menu() { // Function run when user clicks the menu button
+	var menuSelect = window.location.href='TypeSelect.html'; // Redirects to the Type Select page
+	menu.onclick = menuSelect;
 }
 
-document.getElementById('playAgainBtn').onclick = function playAgain() {
-	var again = location.reload();
-
-	document.getElementById("playAgainBtn").onclick = again;
+playAgain.onclick = function playAgain() {
+	var again = location.reload(); // Refreshes the page
+	playAgain.onclick = again;
 }
 },{"simple-peer":28}],2:[function(require,module,exports){
 'use strict'
