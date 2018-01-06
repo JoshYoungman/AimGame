@@ -157,8 +157,34 @@ function peerJS() {
     })
     
     peer.on('data', function (data) { // When the user receives data
-        targetHit(); // Execute the targetHit() function
-        score--; // Reduce the score (due to targetHit() function being executed)
+        var w = window,
+            d = document,
+	        e = d.documentElement,
+	        g = d.getElementsByTagName('body')[0],
+	        x = w.innerWidth || e.clientWidth || g.clientWidth,
+	        y = w.innerHeight|| e.clientHeight|| g.clientHeight,
+	        t = d.getElementById(targetDifficulty),
+        
+        // Create a random x and y position for the target that is within the user's screen resolution
+	    x_pos = Math.floor((Math.random() * x) - difficultySize),
+	    y_pos = Math.floor((Math.random() * y) - difficultySize);
+
+        // If the target is to be displayed off the screen, recalculate another position
+	    while (x_pos < 0)
+	    {
+		   x_pos = Math.floor((Math.random() * x) - difficultySize);
+	    }
+
+	    while (y_pos < 0)
+	    {
+		   y_pos = Math.floor((Math.random() * y) - difficultySize);
+	    }
+
+        // Set the target position
+	    t.style.position = "absolute";
+	    t.style.left = x_pos + 'px';
+	    t.style.top = y_pos + 'px';
+        
         opponentScore = data; // Set opponentScore to 'data' received
         if (opponentScore == 'undefined'){
             opponentScore = 0; // To prevent oppenents score displaying as undefined if they don't score anything
