@@ -13,7 +13,7 @@ function selectHard() {
 	document.getElementById("hardBtn").onclick = hard;
 }
 
-function selectRandom() {
-	var hard = window.location.href='RandomGame.html';	
-	document.getElementById("randomBtn").onclick = hard;
+function selectUltra() {
+	var ultra = window.location.href='UltraGame.html';	
+	document.getElementById("ultraBtn").onclick = ultra;
 }
