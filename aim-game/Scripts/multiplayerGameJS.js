@@ -73,14 +73,6 @@ window.onload = function() { // Run function when the page is loaded
         oIdLabel.style.display = 'block';
         connect.style.display = 'block';
 
-        /*var roomCode = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-        for (var i = 0; i < 4; i++)
-        roomCode += possible.charAt(Math.floor(Math.random() * possible.length));
-
-        document.getElementById("roomCode").innerHTML = "Room Code: " + roomCode;*/
-
         peerJS(); // Execute the peerJS() function
     }
 
@@ -94,14 +86,6 @@ window.onload = function() { // Run function when the page is loaded
         yIdLabel.style.display = 'block';
         oIdLabel.style.display = 'block';
         connect.style.display = 'block';
-
-        /*var roomCode = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-        for (var i = 0; i < 4; i++)
-        roomCode += possible.charAt(Math.floor(Math.random() * possible.length));
-
-        document.getElementById("roomCode").innerHTML = "Room Code: " + roomCode;*/
 
         peerJS(); // Execute the peerJS() function
     }

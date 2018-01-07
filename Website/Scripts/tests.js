@@ -6,25 +6,25 @@ if (location.hash == '#test'){
     assert.ok(targetDifficulty, "Target exists");
     });
     QUnit.test( "Test #3 - Target Type", function( assert ) {
-        if (targetDifficulty == "easyTarget"){
+        if (difficultySize == 59){
             assert.equal(targetDifficulty, "easyTarget", "Target type is set to easy");
-        } else if (targetDifficulty == "mediumTarget"){
+        } else if (difficultySize == 39){
             assert.equal(targetDifficulty, "mediumTarget", "Target type is set to medium");
-        } else if (targetDifficulty == "hardTarget"){
+        } else if (difficultySize == 19){
             assert.equal(targetDifficulty, "hardTarget", "Target type is set to hard");
-        } else if (targetDifficulty == "ultraTarget"){
+        } else if (difficultySize == 9){
             assert.equal(targetDifficulty, "ultraTarget", "Target type is set to ultra");
         }
     });
     QUnit.test( "Test #4 - Target Size", function( assert ) {
-        if (difficultySize == 59){
+        if (targetDifficulty == "easyTarget"){
             assert.equal(difficultySize, 59, "Target size is set to easy");
-        } else if (difficultySize == 39){
+        } else if (targetDifficulty == "mediumTarget"){
             assert.equal(difficultySize, 39, "Target size is set to medium");
-        } else if (difficultySize == 29){
-            assert.equal(difficultySize, 29, "Target size is set to hard");
-        } else if (difficultySize == 19){
-            assert.equal(difficultySize, 19, "Target size is set to ultra");
+        } else if (targetDifficulty == "hardTarget"){
+            assert.equal(difficultySize, 19, "Target size is set to hard");
+        } else if (targetDifficulty == "ultraTarget"){
+            assert.equal(difficultySize, 9, "Target size is set to ultra");
         }
     });
     QUnit.test( "Test #5 - Target Hit", function( assert ) {
